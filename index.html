@@ -6,28 +6,28 @@
 <title>FastFlow Plumbing | 24/7 Emergency Plumbers</title>
 <style>
   :root {
-    --ink: #0f172a;
+    --ink: #0b1220;
     --ink-soft: #334155;
     --ink-muted: #64748b;
     --surface: #ffffff;
-    --surface-warm: #f8fafc;
+    --surface-warm: #f6f8fb;
     --surface-raised: #ffffff;
-    --border: #e2e8f0;
-    --border-subtle: #f1f5f9;
+    --border: #e4e9f0;
+    --border-subtle: #f1f4f8;
     --accent: #dc2626;
     --accent-hover: #b91c1c;
     --accent-soft: #fef2f2;
     --primary: #0ea5e9;
     --primary-hover: #0284c7;
     --success: #16a34a;
-    --radius: 12px;
-    --radius-sm: 8px;
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-    --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
-    --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
-    --max-width: 1100px;
-    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --radius: 14px;
+    --radius-sm: 10px;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+    --shadow: 0 4px 12px -2px rgb(0 0 0 / 0.06);
+    --shadow-md: 0 12px 24px -4px rgb(0 0 0 / 0.08);
+    --shadow-lg: 0 24px 48px -8px rgb(0 0 0 / 0.10);
+    --max-width: 1120px;
+    --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -46,7 +46,7 @@
   a { text-decoration: none; color: inherit; }
   img { max-width: 100%; display: block; }
 
-  /* Emergency bar */
+  /* === Emergency bar === */
   .emergency-bar {
     background: var(--accent);
     color: #fff;
@@ -65,7 +65,7 @@
     font-weight: 700;
   }
 
-  /* Navbar */
+  /* === Navbar === */
   .navbar {
     position: sticky;
     top: 0;
@@ -84,21 +84,12 @@
     font-weight: 800;
     font-size: 20px;
     color: var(--ink);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     display: flex;
     align-items: center;
     gap: 8px;
   }
-  .logo::before {
-    content: "";
-    display: inline-block;
-    width: 28px;
-    height: 28px;
-    background: var(--primary);
-    border-radius: 6px;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2v6m0 0a4 4 0 0 1 4 4v8a4 4 0 0 1-8 0v-8a4 4 0 0 1 4-4'/%3E%3C/svg%3E") center/contain no-repeat;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2v6m0 0a4 4 0 0 1 4 4v8a4 4 0 0 1-8 0v-8a4 4 0 0 1 4-4'/%3E%3C/svg%3E") center/contain no-repeat;
-  }
+  .logo svg { width: 26px; height: 26px; color: var(--primary); }
   .nav-links {
     display: none;
     gap: 32px;
@@ -126,10 +117,10 @@
     display: none;
   }
 
-  /* Hero with video */
+  /* === Hero === */
   .hero {
     position: relative;
-    min-height: 80vh;
+    min-height: 84vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -149,37 +140,43 @@
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.75) 100%);
+    background: linear-gradient(180deg, rgba(11,18,32,0.45) 0%, rgba(11,18,32,0.78) 100%);
     z-index: 1;
   }
   .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 680px;
+    max-width: 720px;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 0.9s var(--ease) 0.3s forwards;
   }
   .hero h1 {
-    font-size: clamp(32px, 5vw, 56px);
-    line-height: 1.1;
+    font-size: clamp(34px, 5.5vw, 60px);
+    line-height: 1.08;
     font-weight: 800;
     letter-spacing: -0.03em;
     margin-bottom: 20px;
     text-wrap: balance;
   }
   .hero p {
-    font-size: clamp(16px, 2vw, 20px);
-    opacity: 0.85;
-    margin-bottom: 36px;
-    line-height: 1.6;
+    font-size: clamp(17px, 2.2vw, 21px);
+    opacity: 0.82;
+    margin-bottom: 40px;
+    line-height: 1.55;
     text-wrap: pretty;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .hero-btns {
     display: flex;
-    gap: 12px;
+    gap: 14px;
     justify-content: center;
     flex-wrap: wrap;
   }
   .btn {
-    padding: 14px 28px;
+    padding: 15px 30px;
     border-radius: var(--radius-sm);
     font-weight: 600;
     font-size: 15px;
@@ -190,19 +187,20 @@
     border: none;
     transition: transform 0.15s var(--ease), box-shadow 0.15s var(--ease), background 0.15s var(--ease);
     line-height: 1;
+    white-space: nowrap;
   }
   .btn:hover { transform: translateY(-2px); }
   .btn-accent {
     background: var(--accent);
     color: #fff;
-    box-shadow: 0 4px 14px rgba(220,38,38,0.35);
+    box-shadow: 0 6px 20px rgba(220,38,38,0.32);
   }
-  .btn-accent:hover { background: var(--accent-hover); box-shadow: 0 6px 20px rgba(220,38,38,0.4); }
+  .btn-accent:hover { background: var(--accent-hover); box-shadow: 0 8px 24px rgba(220,38,38,0.38); }
   .btn-primary {
     background: #fff;
     color: var(--ink);
   }
-  .btn-primary:hover { background: #f8fafc; }
+  .btn-primary:hover { background: #f6f8fb; }
   .btn-outline {
     background: transparent;
     color: #fff;
@@ -210,12 +208,16 @@
   }
   .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
 
-  /* Trust bar */
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* === Trust bar === */
   .trust-bar {
     background: var(--surface);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    gap: 32px;
     padding: 40px 24px;
     text-align: center;
     border-bottom: 1px solid var(--border-subtle);
@@ -225,42 +227,42 @@
   .trust-item .label {
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     color: var(--ink-muted);
     font-weight: 600;
     margin-bottom: 6px;
   }
   .trust-item .value {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 800;
     color: var(--ink);
     letter-spacing: -0.02em;
   }
 
-  /* Section layout */
+  /* === Sections === */
   section {
-    padding: 80px 24px;
+    padding: 88px 24px;
     max-width: var(--max-width);
     margin: 0 auto;
   }
   section.alt { background: var(--surface-warm); }
   section h2 {
-    font-size: clamp(26px, 3vw, 34px);
+    font-size: clamp(28px, 3.2vw, 36px);
     color: var(--ink);
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     font-weight: 800;
     letter-spacing: -0.02em;
     text-wrap: balance;
   }
   .section-lead {
     color: var(--ink-muted);
-    margin-bottom: 48px;
+    margin-bottom: 52px;
     font-size: 17px;
-    max-width: 560px;
+    max-width: 580px;
     line-height: 1.6;
   }
 
-  /* Services */
+  /* === Services === */
   .services-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -271,13 +273,26 @@
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 32px;
-    transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease);
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
   }
+  .service-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s var(--ease);
+  }
+  .service-card:hover::before { transform: scaleX(1); }
   .service-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-md);
-    border-color: var(--border);
+    border-color: #cbd5e1;
   }
   .service-card h3 {
     font-size: 17px;
@@ -291,6 +306,22 @@
     margin-bottom: 18px;
     line-height: 1.6;
   }
+  .service-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .service-price {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--success);
+    background: rgba(22,163,74,0.08);
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: -0.01em;
+  }
   .service-card a {
     color: var(--primary);
     font-weight: 600;
@@ -299,6 +330,7 @@
     align-items: center;
     gap: 4px;
     transition: gap 0.15s var(--ease);
+    white-space: nowrap;
   }
   .service-card a::after { content: "→"; transition: transform 0.15s var(--ease); }
   .service-card:hover a::after { transform: translateX(3px); }
@@ -310,11 +342,12 @@
     display: grid;
     place-items: center;
     margin-bottom: 20px;
-    font-size: 20px;
     border: 1px solid var(--border-subtle);
+    color: var(--primary);
   }
+  .icon svg { width: 22px; height: 22px; }
 
-  /* Process */
+  /* === Process === */
   .process-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -325,18 +358,19 @@
     display: flex;
     gap: 20px;
     align-items: flex-start;
-    padding: 24px;
+    padding: 28px;
     background: var(--surface);
     border-radius: var(--radius);
     border: 1px solid var(--border);
+    position: relative;
   }
   .process-step::before {
     counter-increment: step;
     content: counter(step);
     display: grid;
     place-items: center;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     background: var(--ink);
     color: #fff;
     border-radius: 50%;
@@ -347,15 +381,60 @@
   .process-step h4 {
     font-size: 16px;
     font-weight: 700;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
   .process-step p {
     font-size: 14px;
     color: var(--ink-muted);
-    line-height: 1.5;
+    line-height: 1.55;
   }
 
-  /* Reviews */
+  /* === FAQ === */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  details {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    transition: box-shadow 0.2s var(--ease);
+  }
+  details:hover { box-shadow: var(--shadow-sm); }
+  summary {
+    padding: 20px 24px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    color: var(--ink);
+    transition: color 0.15s;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat center;
+    flex-shrink: 0;
+    transition: transform 0.2s var(--ease);
+  }
+  details[open] summary::after { transform: rotate(180deg); }
+  details[open] summary { color: var(--primary); }
+  .faq-answer {
+    padding: 0 24px 20px;
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+  }
+
+  /* === Reviews === */
   .reviews-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -366,20 +445,20 @@
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 28px;
-    transition: box-shadow 0.2s var(--ease);
+    transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
   }
-  .review:hover { box-shadow: var(--shadow-md); }
+  .review:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
   .review-stars {
     color: #f59e0b;
     font-weight: 800;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     font-size: 15px;
     letter-spacing: 2px;
   }
   .review-text {
     font-size: 15px;
     color: var(--ink-soft);
-    margin-bottom: 16px;
+    margin-bottom: 18px;
     line-height: 1.6;
     text-wrap: pretty;
   }
@@ -389,7 +468,55 @@
     font-weight: 600;
   }
 
-  /* Contact */
+  /* === CTA Section === */
+  .cta-section {
+    background: var(--ink);
+    color: #fff;
+    text-align: center;
+    padding: 72px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(14,165,233,0.08) 0%, transparent 60%);
+  }
+  .cta-section > * { position: relative; z-index: 1; }
+  .cta-section h2 {
+    color: #fff;
+    font-size: clamp(26px, 3vw, 34px);
+    margin-bottom: 14px;
+  }
+  .cta-section p {
+    opacity: 0.65;
+    margin-bottom: 32px;
+    font-size: 16px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* === Areas === */
+  .areas-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .area-tag {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    transition: border-color 0.15s, transform 0.15s var(--ease);
+  }
+  .area-tag:hover { border-color: var(--primary); transform: translateY(-1px); }
+
+  /* === Contact === */
   .contact-split {
     display: grid;
     grid-template-columns: 1fr;
@@ -409,7 +536,7 @@
   .contact-form textarea,
   .contact-form select {
     width: 100%;
-    padding: 12px 14px;
+    padding: 13px 15px;
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     font-size: 15px;
@@ -424,25 +551,25 @@
   .contact-form textarea:focus,
   .contact-form select:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(14,165,233,0.1);
+    box-shadow: 0 0 0 3px rgba(14,165,233,0.10);
   }
   .contact-form textarea { min-height: 110px; resize: vertical; }
   .contact-info h4 {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 700;
     color: var(--ink-muted);
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     margin-bottom: 6px;
   }
   .contact-info p {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     font-size: 15px;
     color: var(--ink-soft);
     line-height: 1.5;
   }
   .contact-info .phone-big {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 800;
     color: var(--ink);
     letter-spacing: -0.02em;
@@ -456,14 +583,20 @@
     place-items: center;
     color: var(--ink-muted);
     font-size: 13px;
-    border: 1px dashed var(--border);
+    border: 1px solid var(--border);
+  }
+  .map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: var(--radius);
   }
 
-  /* Footer */
+  /* === Footer === */
   footer {
     background: var(--ink);
     color: #94a3b8;
-    padding: 48px 24px 32px;
+    padding: 52px 24px 36px;
     text-align: center;
     font-size: 13px;
     border-top: 1px solid rgba(255,255,255,0.06);
@@ -472,25 +605,18 @@
   footer a { color: #cbd5e1; transition: color 0.15s var(--ease); }
   footer a:hover { color: #fff; }
 
-  /* CTA section */
-  .cta-section {
-    background: var(--ink);
-    color: #fff;
-    text-align: center;
-    padding: 64px 24px;
+  /* === Scroll reveal === */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
   }
-  .cta-section h2 {
-    color: #fff;
-    font-size: clamp(24px, 3vw, 32px);
-    margin-bottom: 12px;
-  }
-  .cta-section p {
-    opacity: 0.7;
-    margin-bottom: 28px;
-    font-size: 16px;
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
-  /* Desktop */
+  /* === Desktop === */
   @media (min-width: 768px) {
     .nav-links { display: flex; }
     .nav-phone { display: inline; }
@@ -498,14 +624,34 @@
     .services-grid { grid-template-columns: repeat(3, 1fr); }
     .reviews-grid { grid-template-columns: repeat(3, 1fr); }
     .contact-split { grid-template-columns: 1.1fr 0.9fr; }
-    .process-grid { grid-template-columns: repeat(3, 1fr); }
-    .process-step { flex-direction: column; text-align: center; align-items: center; }
+    .process-grid {
+      grid-template-columns: repeat(3, 1fr);
+      position: relative;
+    }
+    .process-grid::before {
+      content: "";
+      position: absolute;
+      top: 52px;
+      left: 20%;
+      right: 20%;
+      height: 2px;
+      background: var(--border);
+      z-index: 0;
+    }
+    .process-step {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 1;
+      background: var(--surface-warm);
+    }
     .process-step::before { margin-bottom: 16px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    * { animation: none !important; transition: none !important; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
     html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; }
   }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -519,11 +665,15 @@
 </div>
 
 <nav class="navbar">
-  <div class="logo">FastFlow</div>
+  <div class="logo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6m0 0a4 4 0 0 1 4 4v8a4 4 0 0 1-8 0v-8a4 4 0 0 1 4-4"/></svg>
+    FastFlow
+  </div>
   <div style="display:flex;align-items:center;">
     <div class="nav-links">
       <a href="#services">Services</a>
       <a href="#process">How It Works</a>
+      <a href="#faq">FAQ</a>
       <a href="#reviews">Reviews</a>
       <a href="#contact">Contact</a>
     </div>
@@ -567,50 +717,50 @@
   </div>
 </div>
 
-<section id="services">
+<section id="services" class="reveal">
   <h2>What We Handle</h2>
   <p class="section-lead">From 2 AM emergencies to planned upgrades. Flat-rate pricing, no hidden fees, and a workmanship guarantee on every job.</p>
   <div class="services-grid">
     <div class="service-card">
-      <div class="icon">🚿</div>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6m0 0a4 4 0 0 1 4 4v8a4 4 0 0 1-8 0v-8a4 4 0 0 1 4-4"/></svg></div>
       <h3>Emergency Leak Repair</h3>
       <p>Burst pipe or hidden leak? We respond within 30 minutes and stop the damage before it spreads.</p>
-      <a href="#contact">Book repair</a>
+      <div class="service-meta"><span class="service-price">From $95</span><a href="#contact">Book repair</a></div>
     </div>
     <div class="service-card">
-      <div class="icon">🔥</div>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div>
       <h3>Water Heater Service</h3>
       <p>Repair, flush, or install tank and tankless systems. Same-day service available in most areas.</p>
-      <a href="#contact">Book repair</a>
+      <div class="service-meta"><span class="service-price">From $120</span><a href="#contact">Book repair</a></div>
     </div>
     <div class="service-card">
-      <div class="icon">🚽</div>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
       <h3>Drain Cleaning</h3>
       <p>Clogged sink, toilet, or main line? Hydro-jetting and snaking with camera inspection included.</p>
-      <a href="#contact">Book cleaning</a>
+      <div class="service-meta"><span class="service-price">From $85</span><a href="#contact">Book cleaning</a></div>
     </div>
     <div class="service-card">
-      <div class="icon">🛠️</div>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
       <h3>Fixture Installation</h3>
       <p>Faucets, toilets, garbage disposals, and sump pumps installed to code with clean workmanship.</p>
-      <a href="#contact">Book install</a>
+      <div class="service-meta"><span class="service-price">From $150</span><a href="#contact">Book install</a></div>
     </div>
     <div class="service-card">
-      <div class="icon">🏠</div>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
       <h3>Sewer Line Repair</h3>
       <p>Trenchless options, camera diagnostics, and full replacements — handled cleanly and quickly.</p>
-      <a href="#contact">Book inspection</a>
+      <div class="service-meta"><span class="service-price">From $199</span><a href="#contact">Book inspection</a></div>
     </div>
     <div class="service-card">
-      <div class="icon">🔧</div>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
       <h3>Repiping & Remodels</h3>
       <p>Whole-home repipes and bathroom/kitchen plumbing for renovations and insurance claims.</p>
-      <a href="#contact">Get estimate</a>
+      <div class="service-meta"><span class="service-price">Custom quote</span><a href="#contact">Get estimate</a></div>
     </div>
   </div>
 </section>
 
-<section id="process" class="alt">
+<section id="process" class="alt reveal">
   <h2>How It Works</h2>
   <p class="section-lead">No runaround. You call, we show up, we fix it. Here's exactly what to expect.</p>
   <div class="process-grid">
@@ -635,7 +785,50 @@
   </div>
 </section>
 
-<section id="reviews">
+<section id="areas" class="reveal">
+  <h2>Where We Work</h2>
+  <p class="section-lead">Local plumbers who know your neighborhood. No cross-town dispatch fees.</p>
+  <div class="areas-grid">
+    <span class="area-tag">Downtown</span>
+    <span class="area-tag">Westside</span>
+    <span class="area-tag">North Hills</span>
+    <span class="area-tag">Eastwood</span>
+    <span class="area-tag">Southgate</span>
+    <span class="area-tag">Riverside</span>
+    <span class="area-tag">Oak Park</span>
+    <span class="area-tag">Lakeview</span>
+    <span class="area-tag">+ 25 mile radius</span>
+  </div>
+</section>
+
+<section id="faq" class="alt reveal">
+  <h2>Common Questions</h2>
+  <p class="section-lead">Straight answers. No jargon, no upsell.</p>
+  <div class="faq-list">
+    <details>
+      <summary>Do you charge for emergency calls after hours?</summary>
+      <div class="faq-answer">We charge the same flat rate 24/7. No "after-hours surcharge" or weekend markup. The only difference is how fast we get there.</div>
+    </details>
+    <details>
+      <summary>How fast can you get here for an emergency?</summary>
+      <div class="faq-answer">Average response is 30–45 minutes inside our primary service area. We'll give you an exact ETA when you call.</div>
+    </details>
+    <details>
+      <summary>Are your quotes really flat-rate?</summary>
+      <div class="faq-answer">Yes. After we diagnose the issue, we quote one price for the complete repair. If we find something unexpected, we stop and ask before proceeding.</div>
+    </details>
+    <details>
+      <summary>Do you warranty your work?</summary>
+      <div class="faq-answer">Every repair carries a 1-year workmanship warranty. Parts carry the manufacturer warranty. If something we fixed fails, we come back at no charge.</div>
+    </details>
+    <details>
+      <summary>Can you work with my insurance?</summary>
+      <div class="faq-answer">Absolutely. We document everything with photos and detailed invoices. We've worked with every major homeowner's insurance carrier in the region.</div>
+    </details>
+  </div>
+</section>
+
+<section id="reviews" class="reveal">
   <h2>What Customers Say</h2>
   <p class="section-lead">Real reviews from Google, Yelp, and Facebook. We don't hide the bad ones — we fix them.</p>
   <div class="reviews-grid">
@@ -666,19 +859,19 @@
   </div>
 </div>
 
-<section id="contact">
+<section id="contact" class="reveal">
   <h2>Book an Appointment</h2>
   <p class="section-lead">Call, text, or fill out the form. We typically respond within 15 minutes during business hours.</p>
   <div class="contact-split">
-    <form class="contact-form" onsubmit="event.preventDefault(); alert('Form demo only. Connect to backend or Formspree.');">
+    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
       <label for="name">Name</label>
-      <input id="name" placeholder="Full name" required>
+      <input id="name" name="name" placeholder="Full name" required>
 
       <label for="phone">Phone</label>
-      <input id="phone" type="tel" placeholder="(555) 000-0000" required>
+      <input id="phone" name="phone" type="tel" placeholder="(555) 000-0000" required>
 
       <label for="service">Service Needed</label>
-      <select id="service">
+      <select id="service" name="service">
         <option>Emergency repair</option>
         <option>Water heater</option>
         <option>Drain cleaning</option>
@@ -688,9 +881,10 @@
       </select>
 
       <label for="notes">Details</label>
-      <textarea id="notes" placeholder="Brief description of the problem..."></textarea>
+      <textarea id="notes" name="message" placeholder="Brief description of the problem..."></textarea>
 
       <button class="btn btn-primary" type="submit" style="width:100%; justify-content:center; background:var(--ink); color:#fff;">Request Callback</button>
+      <p style="font-size:12px; color:var(--ink-muted); margin-top:12px; text-align:center;">Replace YOUR_FORM_ID with your Formspree endpoint to go live.</p>
     </form>
 
     <div class="contact-info">
@@ -706,7 +900,9 @@
       <h4>Service Area</h4>
       <p>Metro area + 25 mile radius</p>
 
-      <div class="map">[Map placeholder — embed Google Maps iframe here]</div>
+      <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100000!2d-74.006!3d40.7128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQyJzQ2LjEiTiA3NMKwMDAnMjEuNiJX!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
   </div>
 </section>
@@ -715,6 +911,27 @@
   <p>© 2026 FastFlow Plumbing. Licensed & insured. #PLC-28491</p>
   <p><a href="#">Privacy</a> · <a href="#">Terms</a></p>
 </footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // FAQ smooth open
+  document.querySelectorAll('details').forEach(d => {
+    d.addEventListener('toggle', () => {
+      if (d.open) d.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
+</script>
 
 </body>
 </html>
