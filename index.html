@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FastFlow Plumbing | 24/7 Emergency Plumbers</title>
+<style>
+  :root {
+    --primary: #0057b8;
+    --accent: #e63946;
+    --warning: #ffb703;
+    --navy: #1d3557;
+    --white: #f1faee;
+    --gray: #e5e5e5;
+    --text: #333;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: var(--text); line-height: 1.6; background: #fff; }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  /* Top emergency bar */
+  .emergency-bar {
+    background: var(--accent);
+    color: #fff;
+    text-align: center;
+    padding: 8px 16px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .emergency-bar a { color: #fff; text-decoration: underline; }
+
+  /* Sticky nav */
+  .navbar {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    z-index: 100;
+  }
+  .logo { font-weight: 800; font-size: 20px; color: var(--primary); }
+  .nav-links { display: none; gap: 24px; font-weight: 500; font-size: 14px; }
+  .nav-cta {
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .nav-phone {
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 16px;
+    margin-right: 16px;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #0b1d3a 100%);
+    color: #fff;
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .hero h1 { font-size: 36px; line-height: 1.2; margin-bottom: 16px; }
+  .hero p { font-size: 18px; opacity: 0.9; margin-bottom: 32px; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-accent { background: var(--accent); color: #fff; }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); }
+
+  /* Trust bar */
+  .trust-bar {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    padding: 32px 24px;
+    text-align: center;
+    border-bottom: 1px solid var(--gray);
+  }
+  .trust-item .label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: #666; }
+  .trust-item .value { font-size: 20px; font-weight: 800; color: var(--navy); }
+
+  /* Section layout */
+  section { padding: 64px 24px; max-width: 1000px; margin: 0 auto; }
+  section h2 { font-size: 28px; color: var(--navy); margin-bottom: 12px; }
+  .section-lead { color: #555; margin-bottom: 32px; font-size: 16px; }
+
+  /* Services */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .service-card {
+    border: 1px solid var(--gray);
+    border-radius: 12px;
+    padding: 24px;
+    background: #fff;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .service-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.06); }
+  .service-card h3 { font-size: 18px; color: var(--navy); margin-bottom: 6px; }
+  .service-card p { font-size: 14px; color: #555; margin-bottom: 14px; }
+  .service-card a { color: var(--primary); font-weight: 600; font-size: 14px; }
+  .icon { width: 40px; height: 40px; background: var(--white); border-radius: 8px; display: grid; place-items: center; margin-bottom: 14px; font-size: 20px; }
+
+  /* Reviews */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .review {
+    background: #fff;
+    border: 1px solid var(--gray);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .review-stars { color: var(--warning); font-weight: 800; margin-bottom: 8px; }
+  .review-text { font-size: 15px; color: #444; margin-bottom: 10px; }
+  .reviewer { font-size: 13px; color: #777; font-weight: 600; }
+
+  /* Contact */
+  .contact-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .contact-form label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--gray);
+    border-radius: 8px;
+    font-size: 15px;
+    margin-bottom: 16px;
+    font-family: inherit;
+  }
+  .contact-form textarea { min-height: 100px; resize: vertical; }
+  .contact-info p { margin-bottom: 10px; font-size: 15px; }
+  .contact-info strong { display: block; font-size: 13px; color: #777; margin-bottom: 2px; }
+  .map {
+    background: var(--gray);
+    border-radius: 12px;
+    height: 220px;
+    display: grid;
+    place-items: center;
+    color: #777;
+    font-size: 14px;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--navy);
+    color: #fff;
+    padding: 40px 24px;
+    text-align: center;
+    font-size: 14px;
+  }
+  footer a { color: #8ecae6; }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .nav-links { display: flex; }
+    .hero h1 { font-size: 48px; }
+    .trust-bar { grid-template-columns: repeat(4, 1fr); }
+    .services-grid { grid-template-columns: repeat(3, 1fr); }
+    .reviews-grid { grid-template-columns: repeat(3, 1fr); }
+    .contact-split { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="emergency-bar">
+  24/7 Emergency Service Available — <a href="tel:+15550123456">Call (555) 012-3456</a>
+</div>
+
+<nav class="navbar">
+  <div class="logo">FastFlow Plumbing</div>
+  <div style="display:flex;align-items:center;">
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <span class="nav-phone">(555) 012-3456</span>
+    <a href="#contact" class="nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>24/7 Emergency Plumbing You Can Trust</h1>
+  <p>Licensed, insured, and fast. We show up on time, fix it right, and leave your home clean. Serving the metro area for 15+ years.</p>
+  <div class="hero-btns">
+    <a href="tel:+15550123456" class="btn btn-accent">Call Now</a>
+    <a href="#contact" class="btn btn-primary">Get a Free Estimate</a>
+    <a href="#services" class="btn btn-outline">See Services</a>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="label">Licensed & Insured</div>
+    <div class="value">#PLC-28491</div>
+  </div>
+  <div class="trust-item">
+    <div class="label">Google Rating</div>
+    <div class="value">4.9 / 5 Stars</div>
+  </div>
+  <div class="trust-item">
+    <div class="label">Years in Business</div>
+    <div class="value">15+ Years</div>
+  </div>
+  <div class="trust-item">
+    <div class="label">Jobs Completed</div>
+    <div class="value">8,400+</div>
+  </div>
+</div>
+
+<section id="services">
+  <h2>Our Services</h2>
+  <p class="section-lead">From emergency leaks to full installs, we handle it all with flat-rate pricing and a workmanship guarantee.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="icon">🚿</div>
+      <h3>Emergency Leak Repair</h3>
+      <p>Burst pipe or hidden leak? We respond fast and stop damage before it spreads.</p>
+      <a href="#contact">Book repair →</a>
+    </div>
+    <div class="service-card">
+      <div class="icon">🔥</div>
+      <h3>Water Heater Service</h3>
+      <p>Repair, flush, or install tank and tankless systems. Same-day service available.</p>
+      <a href="#contact">Book repair →</a>
+    </div>
+    <div class="service-card">
+      <div class="icon">🚽</div>
+      <h3>Drain Cleaning</h3>
+      <p>Clogged sink, toilet, or main line? Hydro-jetting and snaking with camera inspection.</p>
+      <a href="#contact">Book repair →</a>
+    </div>
+    <div class="service-card">
+      <div class="icon">🛠️</div>
+      <h3>Fixture Installation</h3>
+      <p>Faucets, toilets, garbage disposals, and sump pumps installed to code.</p>
+      <a href="#contact">Book install →</a>
+    </div>
+    <div class="service-card">
+      <div class="icon">🏠</div>
+      <h3>Sewer Line Repair</h3>
+      <p>Trenchless options, camera diagnostics, and full replacements handled cleanly.</p>
+      <a href="#contact">Book inspection →</a>
+    </div>
+    <div class="service-card">
+      <div class="icon">🔧</div>
+      <h3>Repiping & Remodels</h3>
+      <p>Whole-home repipes and bathroom/kitchen plumbing for renovations.</p>
+      <a href="#contact">Get estimate →</a>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" style="background: var(--white);">
+  <h2>What Customers Say</h2>
+  <p class="section-lead">Real reviews from Google, Yelp, and Facebook. We don’t hide the bad ones—we fix them.</p>
+  <div class="reviews-grid">
+    <div class="review">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Called at 11 PM for a burst pipe. Technician arrived in 35 minutes, fixed it, and explained everything. Fair price too."</div>
+      <div class="reviewer">— Marc T., Google</div>
+    </div>
+    <div class="review">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Replaced our old tank water heater with a tankless system. Crew was polite, wore shoe covers, and cleaned up perfectly."</div>
+      <div class="reviewer">— Diana R., Yelp</div>
+    </div>
+    <div class="review">
+      <div class="review-stars">★★★★☆</div>
+      <div class="review-text">"Good work on a tough sewer line clog. Only reason for 4 stars is the initial scheduling took two calls."</div>
+      <div class="reviewer">— James K., Facebook</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Book an Appointment</h2>
+  <p class="section-lead">Call, text, or fill out the form. We typically respond within 15 minutes during business hours.</p>
+  <div class="contact-split">
+    <form class="contact-form" onsubmit="event.preventDefault(); alert('Form demo only. Connect to your backend or formspree.');">
+      <label for="name">Name</label>
+      <input id="name" placeholder="Full name" required>
+
+      <label for="phone">Phone</label>
+      <input id="phone" type="tel" placeholder="(555) 000-0000" required>
+
+      <label for="service">Service Needed</label>
+      <select id="service">
+        <option>Emergency repair</option>
+        <option>Water heater</option>
+        <option>Drain cleaning</option>
+        <option>Fixture install</option>
+        <option>Sewer line</option>
+        <option>Other / not sure</option>
+      </select>
+
+      <label for="notes">Details</label>
+      <textarea id="notes" placeholder="Brief description of the problem..."></textarea>
+
+      <button class="btn btn-primary" type="submit" style="width:100%">Request Callback</button>
+    </form>
+
+    <div class="contact-info">
+      <p><strong>Phone</strong>(555) 012-3456</p>
+      <p><strong>Email</strong>service@fastflowplumbing.example</p>
+      <p><strong>Hours</strong>Mon–Fri 7AM–7PM<br>Sat–Sun 8AM–5PM<br><span style="color:var(--accent);font-weight:700;">Emergency: 24/7</span></p>
+      <p><strong>Service Area</strong>Metro area + 25 mile radius</p>
+      <div class="map">[Map placeholder — embed Google Maps iframe here]</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 FastFlow Plumbing. Licensed & insured.</p>
+  <p style="margin-top:8px;"><a href="#">Privacy</a> · <a href="#">Terms</a></p>
+</footer>
+
+</body>
+</html>
